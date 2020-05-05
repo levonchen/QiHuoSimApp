@@ -50,8 +50,8 @@ namespace MyQiHuoSim.Model
 
 
         public Point LastDrawPoint { get; set; }
-        public int mDrawWindowWidth { get; set; }
-        public int mDrawWindowHeight { get; set; }
+        public int DrawWindowWidth { get; set; }
+        public int DrawWindowHeight { get; set; }
 
 
         public int XStart { get; set; }
@@ -86,6 +86,11 @@ namespace MyQiHuoSim.Model
             Type = tp;
             mDatas = new List<OHLC>();
 
+            init_Canvas_Image();
+        }
+
+        private void init_Canvas_Image()
+        {
             mCurveContext = new CurveImageContext();
 
             mCurveContext.BWidth = 1200;
@@ -104,8 +109,6 @@ namespace MyQiHuoSim.Model
             mVolumnContext.Canvas = new Bitmap(mVolumnContext.Width, mVolumnContext.Height);
 
             LastDrawPoint = new Point();
-
-
         }
 
         public virtual void StartNew()
@@ -118,6 +121,8 @@ namespace MyQiHuoSim.Model
             FirstBar = null;
             LatestQuote = null;
             LatestBar = null;
+
+            init_Canvas_Image();
 
             ClearVolumnCanvas();
         }
@@ -134,6 +139,15 @@ namespace MyQiHuoSim.Model
             }
         }
         public abstract void InsertTick(Quote qt);
+
+        /// <summary>
+        /// 输入当前屏幕输入x，y，来获取指定x位置的OHLC信息
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public abstract OHLC GetBarFromScreenPoint(int x, int y);
+
 
         protected void ResizeCurveImage(int width, int height)
         {
@@ -219,12 +233,14 @@ namespace MyQiHuoSim.Model
 
         public void _updateCurveWindow(int w,int h)
         {
-            mDrawWindowWidth = w;
-            mDrawWindowHeight = h;            
+            DrawWindowWidth = w;
+            DrawWindowHeight = h;            
         }
 
         public void DrawOnGraphics(Graphics gs,int width,int height)
         {
+            _updateCurveWindow(width, height);
+
             if (mCurveContext.mCanvas == null)
                 return;
 

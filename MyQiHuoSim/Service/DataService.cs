@@ -20,6 +20,8 @@ namespace MyQiHuoSim.Service
 
         private System.Timers.Timer mTimer { get; set; }
 
+        
+
         public Dictionary<String,int> TimeSpeed { get; set; }
 
 
@@ -27,6 +29,12 @@ namespace MyQiHuoSim.Service
 
         public List<Quote> allQuotes { get; set; }
         public int readIndex { get; set; }
+
+        /// <summary>
+        /// 播放时间起始时间和qllQuotes 的index
+        /// </summary>
+        public Dictionary<String,int> TimeStartMap { get; set; }
+        private Dictionary<String, bool> TimeTapInclude { get; set; }
 
         public DataService()
         {
@@ -43,6 +51,27 @@ namespace MyQiHuoSim.Service
             mTimer.Interval = 500;
             mTimer.Elapsed += MTimer_Elapsed;
             mTimer.AutoReset = true;
+
+            TimeStartMap = new Dictionary<string, int>();
+            //TimeTapInclude = new Dictionary<string, bool>();
+
+            //TimeTapInclude.Add("09:00:00", false);
+            //TimeTapInclude.Add("09:15:00", false);
+            //TimeTapInclude.Add("09:30:00", false);
+            //TimeTapInclude.Add("09:45:00", false);
+            //TimeTapInclude.Add("10:00:00", false);
+
+            //TimeTapInclude.Add("10:30:00", false);
+            //TimeTapInclude.Add("10:45:00", false);
+            //TimeTapInclude.Add("11:00:00", false);
+            //TimeTapInclude.Add("11:15:00", false);
+
+            //TimeTapInclude.Add("13:30:00", false);
+            //TimeTapInclude.Add("13:45:00", false);
+            //TimeTapInclude.Add("14:00:00", false);
+            //TimeTapInclude.Add("14:15:00", false);
+            //TimeTapInclude.Add("14:30:00", false);
+            //TimeTapInclude.Add("14:45:00", false);
         }
 
         public void UpdateSpeed(string key)
@@ -63,9 +92,23 @@ namespace MyQiHuoSim.Service
             OnQuoteTick?.Invoke(this, args);
         }
 
+        /// <summary>
+        /// 开始时间点
+        /// </summary>
+        /// <returns></returns>
+        public String[] GetAllTimeStartKeys()
+        {           
+            return TimeStartMap.Keys.ToArray();
+        }
+
         public void LoadAllDatas(String filePath)
         {
             allQuotes = new List<Quote>();
+
+            TimeStartMap = new Dictionary<string, int>();
+                       
+            int tTimeSpan = 2 * 60 * 15; //15分钟的tick
+
             using (var csvParse = new StreamReader(File.OpenRead(filePath)))
             {
                 var qt = GetOneLine(csvParse);
@@ -74,13 +117,43 @@ namespace MyQiHuoSim.Service
                     //加一个索引
                     qt.index = allQuotes.Count();
 
-                    allQuotes.Add(qt);
+                    allQuotes.Add(qt);                   
+
+                    //求余数
+                    int nLeft = qt.index % tTimeSpan;
+                    if(nLeft == 0)
+                    {
+                        string strTime = qt.datetime.ToString("HH:mm:ss");
+                        TimeStartMap.Add(strTime, qt.index);
+                    }
                     qt = GetOneLine(csvParse);
                 }
             }
         }
 
-        public void StartPlayData(bool bUseRandomStartIndex)
+        public void StartPlayBySpecifyTimeKey(String timeKey)
+        {
+            if(TimeStartMap.ContainsKey(timeKey))
+            {
+                readIndex = TimeStartMap[timeKey];
+
+                mTimer.Enabled = true;
+            }
+        }
+
+        public void StartPlayBySpecifyIndex(int index)
+        {
+            if (allQuotes.Count() <= index)
+            {
+                return;
+            }
+
+            readIndex = index;
+
+            mTimer.Enabled = true;
+        }
+
+        public void StartPlay(bool bUseRandomStartIndex)
         {
             if(allQuotes.Count() == 0)
             {

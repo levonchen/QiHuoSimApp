@@ -125,16 +125,30 @@ namespace MyQiHuoSim
             }
             DrawImageService.Instance.StartDraw();
             Invalidate();
+
+            init_starttime_droplist();
+        }
+
+        private void init_starttime_droplist()
+        {
+            toolStripDropDownButton_SpecifyTimeStart.DropDownItems.Clear();
+            var items = DataService.Instance.GetAllTimeStartKeys();
+            foreach (var it in items)
+            {
+                toolStripDropDownButton_SpecifyTimeStart.DropDownItems.Add(it);
+            }
         }
 
         private void toolStripButtonStart_Click(object sender, EventArgs e)
         {
-            DataService.Instance.StartPlayData(false);           
+            DrawImageService.Instance.StartDraw();
+            DataService.Instance.StartPlay(false);           
         }
 
         private void toolStripButton_randomStart_Click(object sender, EventArgs e)
         {
-            DataService.Instance.StartPlayData(true);
+            DrawImageService.Instance.StartDraw();
+            DataService.Instance.StartPlay(true);
         }
 
         private void toolStripButtonStop_Click(object sender, EventArgs e)
@@ -188,6 +202,16 @@ namespace MyQiHuoSim
             Invalidate();
         }
 
+        private void toolStripDropDownButton_SpecifyTimeStart_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void toolStripDropDownButton_SpecifyTimeStart_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            String strText = e.ClickedItem.Text;
+            DrawImageService.Instance.StartDraw();
+            DataService.Instance.StartPlayBySpecifyTimeKey(strText);
+        }
     }
 }

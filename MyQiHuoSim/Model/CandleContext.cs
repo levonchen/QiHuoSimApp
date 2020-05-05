@@ -62,6 +62,11 @@ namespace MyQiHuoSim.Model
             m_OneMinBar.InsertTick(qt);
         }
 
+        public OHLC GetBarFromScreenPoint(int x, int y)
+        {
+            return TickBar.GetBarFromScreenPoint(x, y);
+        }
+
         public void DrawOnGraphics(Graphics gs, int width, int height)
         {
             TickBar.DrawOnGraphics(gs, width, height);

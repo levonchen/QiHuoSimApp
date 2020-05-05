@@ -76,9 +76,15 @@ namespace MyQiHuoSim
                 xMoveStart = e.X;
                 yMoveStart = e.Y;
 
+                IsMouseMove = true;
+
                 Invalidate();
             }
         }
+
+        private bool IsMouseMove { get; set; }
+
+        private System.Drawing.Point RightMouseDownPoint { get; set; }
 
         private void CandleStickView_MouseDown(object sender, MouseEventArgs e)
         {
@@ -86,6 +92,12 @@ namespace MyQiHuoSim
             {
                 xMoveStart = e.X;
                 yMoveStart = e.Y;
+
+                IsMouseMove = false;
+            }
+           if(e.Button == MouseButtons.Right)
+            {
+                RightMouseDownPoint = new System.Drawing.Point(e.X, e.Y);
             }
         }
 
@@ -97,6 +109,36 @@ namespace MyQiHuoSim
 
             DrawImageService.Instance.mCandleContext.ZoomOffset(10*zoomOffset);
             Invalidate();
+        }
+
+        private void CandleStickView_Click(object sender, EventArgs e)
+        {
+            if (!IsMouseMove)
+            {
+                MouseEventArgs ma = (MouseEventArgs)e;
+
+                var pt = new System.Drawing.Point(ma.X, ma.Y);
+
+                OHLC oc = DrawImageService.Instance.mCandleContext.GetBarFromScreenPoint(pt.X, pt.Y);
+                if (oc != null)
+                {
+                    toolTip_OHLCText.Show(oc.ToString(), this);
+                }
+            }
+        }
+
+        private void 从当前点开始播放ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //int x = contextMenuStrip_CandleStick.Left;
+            //int y =contextMenuStrip_CandleStick.Top;            
+
+            OHLC oc = DrawImageService.Instance.mCandleContext.GetBarFromScreenPoint(RightMouseDownPoint.X, RightMouseDownPoint.Y);
+            if (oc != null)
+            {
+                
+                DrawImageService.Instance.StartDraw();
+                DataService.Instance.StartPlayBySpecifyIndex(oc.Index);
+            }
         }
     }
 }

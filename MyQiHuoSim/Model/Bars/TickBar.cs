@@ -26,6 +26,7 @@ namespace MyQiHuoSim.Model.Bars
         public override void InsertTick(Quote qt)
         {
             OHLC hl = new OHLC();
+            hl.Index = qt.index;
             hl.Open = qt.last_price;
             hl.Date = qt.datetime;
             if(LatestQuote != null)
@@ -212,6 +213,23 @@ namespace MyQiHuoSim.Model.Bars
                 //    gr.DrawRectangle(thick_pen, rect);
                 //}
             }
+        }
+
+        public override OHLC GetBarFromScreenPoint(int x, int y)
+        {
+            int xImageWidth = DrawWindowWidth - ZoomIndex;
+
+            float xZoom = ((float)xImageWidth / DrawWindowWidth) * x;
+
+            int realX = (int)(XStart + xZoom);
+
+            int ohlcCount = mDatas.Count();
+            if(ohlcCount > realX)
+            {
+                return mDatas[realX];
+            }
+
+            return null;
         }
     }
 }

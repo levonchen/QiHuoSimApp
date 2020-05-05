@@ -38,6 +38,7 @@ namespace MyQiHuoSim.Model.Bars
             if (LatestBar == null)
             {
                 LatestBar = new OHLC();
+                LatestBar.Index = qt.index;
                 LatestBar.Date = qt.datetime;
                 LatestBar.Open = qt.last_price;
                 LatestBar.Close = qt.last_price;
@@ -52,6 +53,7 @@ namespace MyQiHuoSim.Model.Bars
                 if(LatestBar.Date.Minute != qt.datetime.Minute)
                 {
                     LatestBar = new OHLC();
+                    LatestBar.Index = qt.index;
                     LatestBar.Date = qt.datetime;
                     LatestBar.Open = qt.last_price;
                     LatestBar.Close = qt.last_price;
@@ -258,6 +260,26 @@ namespace MyQiHuoSim.Model.Bars
                 //    gr.DrawRectangle(thick_pen, rect);
                 //}
             }
+        }
+
+        public override OHLC GetBarFromScreenPoint(int x, int y)
+        {
+            int xImageWidth = DrawWindowWidth - ZoomIndex;
+
+            float xZoom = ((float)xImageWidth / DrawWindowWidth) * x;
+
+            int realX = (int)(XStart + xZoom);
+
+            //每一个bar是10个像素的宽度
+            int indexReal = realX / 10;
+
+            int ohlcCount = mDatas.Count();
+            if (ohlcCount > indexReal)
+            {
+                return mDatas[indexReal];
+            }
+
+            return null;
         }
 
     }
