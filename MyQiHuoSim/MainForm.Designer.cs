@@ -52,7 +52,6 @@
             this.oolStripMenuItem_TickBar = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_OneMiBar = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.toolStripComboBox_PlayStartTime = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripDropDownButton_SpecifyTimeStart = new System.Windows.Forms.ToolStripDropDownButton();
             this.candleStickView1 = new MyQiHuoSim.CandleStickView();
             this.mdForFiveQuote1 = new MyQiHuoSim.MDForFiveQuote();
@@ -187,8 +186,7 @@
             this.toolStripSeparator2,
             this.toolStripButtonStop,
             this.toolStripComboBox_Speed,
-            this.toolStripDropDownButton_BarTypeSelect,
-            this.toolStripComboBox_PlayStartTime});
+            this.toolStripDropDownButton_BarTypeSelect});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1055, 25);
@@ -339,11 +337,6 @@
             this.splitContainer3.SplitterDistance = 33;
             this.splitContainer3.TabIndex = 7;
             // 
-            // toolStripComboBox_PlayStartTime
-            // 
-            this.toolStripComboBox_PlayStartTime.Name = "toolStripComboBox_PlayStartTime";
-            this.toolStripComboBox_PlayStartTime.Size = new System.Drawing.Size(121, 25);
-            // 
             // toolStripDropDownButton_SpecifyTimeStart
             // 
             this.toolStripDropDownButton_SpecifyTimeStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -461,7 +454,6 @@
         private RecordTransaction recordTransaction_History;
         private System.Windows.Forms.ToolStripButton toolStripButton_randomStart;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_PlayStartTime;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton_SpecifyTimeStart;
     }
 }

@@ -107,6 +107,8 @@ namespace MyQiHuoSim.Model
             mVolumnContext.Width = mCurveContext.BWidth;
             mVolumnContext.Height = 200;
             mVolumnContext.Canvas = new Bitmap(mVolumnContext.Width, mVolumnContext.Height);
+            //默认三百手
+            mVolumnContext.MaxVolumn = 300;
 
             LastDrawPoint = new Point();
         }

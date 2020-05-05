@@ -84,20 +84,22 @@ namespace MyQiHuoSim.Model.Bars
             {
                 LatestQuote = qt;
                 return;
-            }
-            
+            }            
 
             if (FirstBar == null)
             {
                 FirstBar = LatestBar;
                 mCurveContext.YOffset = LatestBar.Open;
 
-                mVolumnContext.MaxVolumn = 20*LatestBar.Volumn;
+                if (20 * LatestBar.Volumn > mVolumnContext.MaxVolumn)
+                {
+                    mVolumnContext.MaxVolumn = 20 * LatestBar.Volumn;
+                }
             }
 
             if(LatestBar.Volumn > mVolumnContext.MaxVolumn)
             {
-                mVolumnContext.MaxVolumn = LatestBar.Volumn;
+                mVolumnContext.MaxVolumn = LatestBar.Volumn + 100;
 
             }
 
@@ -163,6 +165,8 @@ namespace MyQiHuoSim.Model.Bars
                 {
                     cl = Brushes.Green;
                 }
+                //刷背景
+                gr.FillRectangle(Brushes.Black, xOff, 2, 10, mVolumnContext.Height);
 
                 gr.FillRectangle(cl, xOff + 2, y, 8, barHeight);           
               
