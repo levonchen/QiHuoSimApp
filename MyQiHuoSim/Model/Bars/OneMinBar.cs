@@ -272,6 +272,11 @@ namespace MyQiHuoSim.Model.Bars
         {
             int xImageWidth = DrawWindowWidth - ZoomIndex;
 
+            if(DrawWindowWidth == 0)
+            {
+                return null;
+            }
+
             float xZoom = ((float)xImageWidth / DrawWindowWidth) * x;
 
             int realX = (int)(XStart + xZoom);

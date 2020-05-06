@@ -16,6 +16,8 @@ namespace MyQiHuoSim
 {
     public partial class CandleStickView : UserControl
     {    
+
+        
         public CandleStickView()
         {
             InitializeComponent();
@@ -26,6 +28,7 @@ namespace MyQiHuoSim
 
             this.MouseWheel += CandleStickView_MouseWheel;
 
+            isToolTipShow = false;
             //setup();
         }
 
@@ -80,6 +83,14 @@ namespace MyQiHuoSim
 
                 Invalidate();
             }
+            else
+            {             
+                if(xMoveStart != e.X)
+                {
+                    xMoveStart = e.X;
+                    SetDrawTikClicked(e.X, e.Y);
+                }
+            }
         }
 
         private bool IsMouseMove { get; set; }
@@ -117,13 +128,28 @@ namespace MyQiHuoSim
             {
                 MouseEventArgs ma = (MouseEventArgs)e;
 
-                var pt = new System.Drawing.Point(ma.X, ma.Y);
+                SetDrawTikClicked(ma.X, ma.Y);
 
-                OHLC oc = DrawImageService.Instance.mCandleContext.GetBarFromScreenPoint(pt.X, pt.Y);
-                if (oc != null)
-                {
-                    toolTip_OHLCText.Show(oc.ToString(), this);
-                }
+                isToolTipShow = !isToolTipShow;
+            }
+        }
+        private bool isToolTipShow { get; set; }
+        private void SetDrawTikClicked(int x,int y)
+        {
+            if (!isToolTipShow)
+            {
+                toolTip_OHLCText.Hide(this);
+                Console.WriteLine("Hide Tooltip");
+                return;
+            }
+
+            var pt = new System.Drawing.Point(x, y);
+
+            OHLC oc = DrawImageService.Instance.mCandleContext.GetBarFromScreenPoint(pt.X, pt.Y);
+            if (oc != null)
+            {                
+                toolTip_OHLCText.Show(oc.ToString(), this, new System.Drawing.Point(0, 0));
+                Console.WriteLine("Show Tooltip");
             }
         }
 

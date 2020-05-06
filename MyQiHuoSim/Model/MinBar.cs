@@ -210,9 +210,9 @@ namespace MyQiHuoSim.Model
             int xOffset = LastDrawPoint.x - XStart;
             int yOffset = LastDrawPoint.y - YStart;
 
-            if(xOffset > DrawWindowWidth - 500)
+            if(xOffset > DrawWindowWidth - 100)
             {
-                XStart += 200;
+                XStart += 300;
             }
 
             if(yOffset < 100)

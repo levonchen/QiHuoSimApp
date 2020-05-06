@@ -37,14 +37,16 @@
             // 
             // toolTip_OHLCText
             // 
-            this.toolTip_OHLCText.ToolTipTitle = "Test";
+            this.toolTip_OHLCText.AutomaticDelay = 10;
+            this.toolTip_OHLCText.ShowAlways = true;
+            this.toolTip_OHLCText.UseAnimation = false;
             // 
             // contextMenuStrip_CandleStick
             // 
             this.contextMenuStrip_CandleStick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.从当前点开始播放ToolStripMenuItem});
             this.contextMenuStrip_CandleStick.Name = "contextMenuStrip_CandleStick";
-            this.contextMenuStrip_CandleStick.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip_CandleStick.Size = new System.Drawing.Size(173, 26);
             // 
             // 从当前点开始播放ToolStripMenuItem
             // 

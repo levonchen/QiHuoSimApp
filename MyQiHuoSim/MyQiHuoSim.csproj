@@ -112,6 +112,7 @@
     <Compile Include="Setings\ShutcutKeySettings.cs" />
     <Compile Include="Views\DataTimeCellTemplateCell.cs" />
     <Compile Include="Views\DirectionCellTemplateCell.cs" />
+    <Compile Include="Views\OHLCBarDetailView.cs" />
     <EmbeddedResource Include="CandleStickView.resx">
       <DependentUpon>CandleStickView.cs</DependentUpon>
     </EmbeddedResource>
