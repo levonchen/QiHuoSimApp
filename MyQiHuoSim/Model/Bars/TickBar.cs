@@ -78,9 +78,9 @@ namespace MyQiHuoSim.Model.Bars
                 ResizeCurveImage(mCurveContext.BWidth + 1000, mCurveContext.BHeight);
             }
 
-            if(mCurveContext.YMinPoint < 50 || mCurveContext.YMaxPoint > mCurveContext.BHeight - 200)
+            if(mCurveContext.YMinPoint < 200 || mCurveContext.YMaxPoint > mCurveContext.BHeight - 200)
             {
-                ResizeCurveImage(mCurveContext.BWidth, mCurveContext.BHeight + 200);
+                ResizeCurveImage(mCurveContext.BWidth, mCurveContext.BHeight + 400);
 
                 mCurveContext.YMinPoint = mCurveContext.YMidPoint;
                 mCurveContext.YMaxPoint = mCurveContext.YMidPoint;
