@@ -31,16 +31,27 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.candleStickView1 = new MyQiHuoSim.CandleStickView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.mdForFiveQuote1 = new MyQiHuoSim.MDForFiveQuote();
+            this.dealPanel1 = new MyQiHuoSim.DealPanel();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.recordTransaction_WaitingOrders = new MyQiHuoSim.RecordTransaction();
+            this.tabControl持仓_历史成交 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.recordTransaction_Position = new MyQiHuoSim.RecordTransaction();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.recordTransaction_History = new MyQiHuoSim.RecordTransaction();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonLoadDatas = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonStart = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_randomStart = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton_SpecifyTimeStart = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton_Pause = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Continue = new System.Windows.Forms.ToolStripButton();
@@ -51,13 +62,9 @@
             this.toolStripDropDownButton_BarTypeSelect = new System.Windows.Forms.ToolStripDropDownButton();
             this.oolStripMenuItem_TickBar = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_OneMiBar = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton_Setting = new System.Windows.Forms.ToolStripButton();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.toolStripDropDownButton_SpecifyTimeStart = new System.Windows.Forms.ToolStripDropDownButton();
-            this.candleStickView1 = new MyQiHuoSim.CandleStickView();
-            this.mdForFiveQuote1 = new MyQiHuoSim.MDForFiveQuote();
-            this.dealPanel1 = new MyQiHuoSim.DealPanel();
-            this.recordTransaction_Position = new MyQiHuoSim.RecordTransaction();
-            this.recordTransaction_History = new MyQiHuoSim.RecordTransaction();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,11 +73,17 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabControl持仓_历史成交.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -100,17 +113,27 @@
             this.splitContainer1.SplitterDistance = 659;
             this.splitContainer1.TabIndex = 5;
             // 
+            // candleStickView1
+            // 
+            this.candleStickView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.candleStickView1.Location = new System.Drawing.Point(0, 0);
+            this.candleStickView1.Name = "candleStickView1";
+            this.candleStickView1.Size = new System.Drawing.Size(655, 522);
+            this.candleStickView1.TabIndex = 0;
+            // 
             // splitContainer2
             // 
             this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.mdForFiveQuote1);
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer5);
+            this.splitContainer2.Panel1.Controls.Add(this.splitter1);
             // 
             // splitContainer2.Panel2
             // 
@@ -119,35 +142,107 @@
             this.splitContainer2.SplitterDistance = 228;
             this.splitContainer2.TabIndex = 0;
             // 
+            // splitContainer5
+            // 
+            this.splitContainer5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.Location = new System.Drawing.Point(3, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.mdForFiveQuote1);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.dealPanel1);
+            this.splitContainer5.Size = new System.Drawing.Size(385, 228);
+            this.splitContainer5.SplitterDistance = 197;
+            this.splitContainer5.TabIndex = 2;
+            // 
+            // mdForFiveQuote1
+            // 
+            this.mdForFiveQuote1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mdForFiveQuote1.Location = new System.Drawing.Point(0, 0);
+            this.mdForFiveQuote1.Name = "mdForFiveQuote1";
+            this.mdForFiveQuote1.Size = new System.Drawing.Size(195, 226);
+            this.mdForFiveQuote1.TabIndex = 0;
+            // 
+            // dealPanel1
+            // 
+            this.dealPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dealPanel1.Location = new System.Drawing.Point(0, 0);
+            this.dealPanel1.Name = "dealPanel1";
+            this.dealPanel1.Size = new System.Drawing.Size(182, 226);
+            this.dealPanel1.TabIndex = 0;
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 228);
+            this.splitter1.TabIndex = 1;
+            this.splitter1.TabStop = false;
+            // 
             // splitContainer4
             // 
+            this.splitContainer4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer4.Location = new System.Drawing.Point(0, 0);
             this.splitContainer4.Name = "splitContainer4";
             this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer4.Panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.dealPanel1);
+            this.splitContainer4.Panel1.Controls.Add(this.tabControl2);
             // 
             // splitContainer4.Panel2
             // 
-            this.splitContainer4.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer4.Size = new System.Drawing.Size(386, 288);
-            this.splitContainer4.SplitterDistance = 100;
+            this.splitContainer4.Panel2.Controls.Add(this.tabControl持仓_历史成交);
+            this.splitContainer4.Size = new System.Drawing.Size(388, 290);
+            this.splitContainer4.SplitterDistance = 139;
             this.splitContainer4.TabIndex = 0;
             // 
-            // tabControl1
+            // tabControl2
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(386, 184);
-            this.tabControl1.TabIndex = 1;
+            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl2.Location = new System.Drawing.Point(0, 0);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(386, 137);
+            this.tabControl2.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.recordTransaction_WaitingOrders);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(378, 111);
+            this.tabPage3.TabIndex = 0;
+            this.tabPage3.Text = "委托单";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // recordTransaction_WaitingOrders
+            // 
+            this.recordTransaction_WaitingOrders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recordTransaction_WaitingOrders.Location = new System.Drawing.Point(3, 3);
+            this.recordTransaction_WaitingOrders.Name = "recordTransaction_WaitingOrders";
+            this.recordTransaction_WaitingOrders.RecordType = MyQiHuoSim.Model.RecordListType.Waiting;
+            this.recordTransaction_WaitingOrders.Size = new System.Drawing.Size(372, 105);
+            this.recordTransaction_WaitingOrders.TabIndex = 0;
+            // 
+            // tabControl持仓_历史成交
+            // 
+            this.tabControl持仓_历史成交.Controls.Add(this.tabPage1);
+            this.tabControl持仓_历史成交.Controls.Add(this.tabPage2);
+            this.tabControl持仓_历史成交.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl持仓_历史成交.Location = new System.Drawing.Point(0, 0);
+            this.tabControl持仓_历史成交.Name = "tabControl持仓_历史成交";
+            this.tabControl持仓_历史成交.SelectedIndex = 0;
+            this.tabControl持仓_历史成交.Size = new System.Drawing.Size(386, 145);
+            this.tabControl持仓_历史成交.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -155,10 +250,19 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(378, 158);
+            this.tabPage1.Size = new System.Drawing.Size(378, 119);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "持仓";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // recordTransaction_Position
+            // 
+            this.recordTransaction_Position.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recordTransaction_Position.Location = new System.Drawing.Point(3, 3);
+            this.recordTransaction_Position.Name = "recordTransaction_Position";
+            this.recordTransaction_Position.RecordType = MyQiHuoSim.Model.RecordListType.Position;
+            this.recordTransaction_Position.Size = new System.Drawing.Size(372, 113);
+            this.recordTransaction_Position.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -166,10 +270,19 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(378, 158);
+            this.tabPage2.Size = new System.Drawing.Size(376, 118);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "历史成交";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // recordTransaction_History
+            // 
+            this.recordTransaction_History.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recordTransaction_History.Location = new System.Drawing.Point(3, 3);
+            this.recordTransaction_History.Name = "recordTransaction_History";
+            this.recordTransaction_History.RecordType = MyQiHuoSim.Model.RecordListType.History;
+            this.recordTransaction_History.Size = new System.Drawing.Size(370, 112);
+            this.recordTransaction_History.TabIndex = 0;
             // 
             // toolStrip1
             // 
@@ -186,7 +299,9 @@
             this.toolStripSeparator2,
             this.toolStripButtonStop,
             this.toolStripComboBox_Speed,
-            this.toolStripDropDownButton_BarTypeSelect});
+            this.toolStripDropDownButton_BarTypeSelect,
+            this.toolStripSeparator4,
+            this.toolStripButton_Setting});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1055, 25);
@@ -228,6 +343,17 @@
             this.toolStripButton_randomStart.Size = new System.Drawing.Size(60, 22);
             this.toolStripButton_randomStart.Text = "随即开始";
             this.toolStripButton_randomStart.Click += new System.EventHandler(this.toolStripButton_randomStart_Click);
+            // 
+            // toolStripDropDownButton_SpecifyTimeStart
+            // 
+            this.toolStripDropDownButton_SpecifyTimeStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton_SpecifyTimeStart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton_SpecifyTimeStart.Image")));
+            this.toolStripDropDownButton_SpecifyTimeStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton_SpecifyTimeStart.Name = "toolStripDropDownButton_SpecifyTimeStart";
+            this.toolStripDropDownButton_SpecifyTimeStart.Size = new System.Drawing.Size(93, 22);
+            this.toolStripDropDownButton_SpecifyTimeStart.Text = "指定时间开始";
+            this.toolStripDropDownButton_SpecifyTimeStart.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripDropDownButton_SpecifyTimeStart_DropDownItemClicked);
+            this.toolStripDropDownButton_SpecifyTimeStart.Click += new System.EventHandler(this.toolStripDropDownButton_SpecifyTimeStart_Click);
             // 
             // toolStripSeparator3
             // 
@@ -315,6 +441,21 @@
             this.ToolStripMenuItem_OneMiBar.Text = "1分钟";
             this.ToolStripMenuItem_OneMiBar.Click += new System.EventHandler(this.ToolStripMenuItem_OneMiBar_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton_Setting
+            // 
+            this.toolStripButton_Setting.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton_Setting.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Setting.Image")));
+            this.toolStripButton_Setting.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Setting.Name = "toolStripButton_Setting";
+            this.toolStripButton_Setting.Size = new System.Drawing.Size(36, 22);
+            this.toolStripButton_Setting.Text = "设置";
+            this.toolStripButton_Setting.Click += new System.EventHandler(this.toolStripButton_Setting_Click);
+            // 
             // splitContainer3
             // 
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -337,69 +478,18 @@
             this.splitContainer3.SplitterDistance = 33;
             this.splitContainer3.TabIndex = 7;
             // 
-            // toolStripDropDownButton_SpecifyTimeStart
-            // 
-            this.toolStripDropDownButton_SpecifyTimeStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton_SpecifyTimeStart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton_SpecifyTimeStart.Image")));
-            this.toolStripDropDownButton_SpecifyTimeStart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton_SpecifyTimeStart.Name = "toolStripDropDownButton_SpecifyTimeStart";
-            this.toolStripDropDownButton_SpecifyTimeStart.Size = new System.Drawing.Size(93, 22);
-            this.toolStripDropDownButton_SpecifyTimeStart.Text = "指定时间开始";
-            this.toolStripDropDownButton_SpecifyTimeStart.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripDropDownButton_SpecifyTimeStart_DropDownItemClicked);
-            this.toolStripDropDownButton_SpecifyTimeStart.Click += new System.EventHandler(this.toolStripDropDownButton_SpecifyTimeStart_Click);
-            // 
-            // candleStickView1
-            // 
-            this.candleStickView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.candleStickView1.Location = new System.Drawing.Point(0, 0);
-            this.candleStickView1.Name = "candleStickView1";
-            this.candleStickView1.Size = new System.Drawing.Size(655, 522);
-            this.candleStickView1.TabIndex = 0;
-            // 
-            // mdForFiveQuote1
-            // 
-            this.mdForFiveQuote1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mdForFiveQuote1.Location = new System.Drawing.Point(0, 0);
-            this.mdForFiveQuote1.Name = "mdForFiveQuote1";
-            this.mdForFiveQuote1.Size = new System.Drawing.Size(386, 226);
-            this.mdForFiveQuote1.TabIndex = 0;
-            // 
-            // dealPanel1
-            // 
-            this.dealPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dealPanel1.Location = new System.Drawing.Point(0, 0);
-            this.dealPanel1.Name = "dealPanel1";
-            this.dealPanel1.Size = new System.Drawing.Size(386, 100);
-            this.dealPanel1.TabIndex = 0;
-            // 
-            // recordTransaction_Position
-            // 
-            this.recordTransaction_Position.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.recordTransaction_Position.Location = new System.Drawing.Point(3, 3);
-            this.recordTransaction_Position.Name = "recordTransaction_Position";
-            this.recordTransaction_Position.RecordType = MyQiHuoSim.Model.RecordListType.Position;
-            this.recordTransaction_Position.Size = new System.Drawing.Size(372, 152);
-            this.recordTransaction_Position.TabIndex = 0;
-            // 
-            // recordTransaction_History
-            // 
-            this.recordTransaction_History.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.recordTransaction_History.Location = new System.Drawing.Point(3, 3);
-            this.recordTransaction_History.Name = "recordTransaction_History";
-            this.recordTransaction_History.RecordType = MyQiHuoSim.Model.RecordListType.History;
-            this.recordTransaction_History.Size = new System.Drawing.Size(372, 152);
-            this.recordTransaction_History.TabIndex = 0;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1057, 565);
             this.Controls.Add(this.splitContainer3);
+            this.KeyPreview = true;
             this.Name = "MainForm";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -408,11 +498,17 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabControl持仓_历史成交.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
@@ -448,13 +544,20 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton_BarTypeSelect;
         private System.Windows.Forms.ToolStripMenuItem oolStripMenuItem_TickBar;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_OneMiBar;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl持仓_历史成交;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private RecordTransaction recordTransaction_History;
         private System.Windows.Forms.ToolStripButton toolStripButton_randomStart;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton_SpecifyTimeStart;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Setting;
+        private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private RecordTransaction recordTransaction_WaitingOrders;
     }
 }
 

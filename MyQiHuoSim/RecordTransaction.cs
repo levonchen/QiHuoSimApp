@@ -27,7 +27,52 @@ namespace MyQiHuoSim
             RecordTransService.Instance.OnInsertPosition += Instance_OnInsertPosition;
             RecordTransService.Instance.OnRemovePosition += Instance_OnRemovePosition;
 
+            RecordTransService.Instance.OnInsertWaitingOrder += Instance_OnInsertWaitingOrder;
+            RecordTransService.Instance.OnRemoveWaitingOrder += Instance_OnRemoveWaitingOrder;
+
             DataService.Instance.OnQuoteTick += Instance_OnQuoteTick;
+        }
+
+        private void Instance_OnRemoveWaitingOrder(object sender, QHEvents.OrderArgs e)
+        {
+            if (RecordType != RecordListType.Waiting)
+            {
+                return;
+            }
+
+            if (this.InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    recordTransItemBindingSource.Remove(e.order);
+                }));
+            }
+            else
+            {
+                recordTransItemBindingSource.Remove(e.order);
+            }
+        
+        }
+
+        private void Instance_OnInsertWaitingOrder(object sender, QHEvents.OrderArgs e)
+        {
+            if (RecordType != RecordListType.Waiting)
+            {
+                return;
+            }
+
+            if (this.InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    recordTransItemBindingSource.Add(e.order);
+
+                }));
+            }
+            else
+            {
+                recordTransItemBindingSource.Add(e.order);
+            }
         }
 
         private void Instance_OnQuoteTick(object sender, QHEvents.QuoteEventArgs e)
@@ -87,7 +132,19 @@ namespace MyQiHuoSim
                 return;
             }
 
-            recordTransItemBindingSource.Remove(e.order);
+            if (this.InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    recordTransItemBindingSource.Remove(e.order);
+                }));
+            }
+            else
+            {
+                recordTransItemBindingSource.Remove(e.order);
+
+            }
+
 
         }
 
@@ -102,7 +159,18 @@ namespace MyQiHuoSim
             {
                 return;
             }
-            recordTransItemBindingSource.Add(e.order);
+
+            if (this.InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    recordTransItemBindingSource.Add(e.order);
+                }));
+            }
+            else
+            {
+                recordTransItemBindingSource.Add(e.order);
+            }
         }
 
         /// <summary>
@@ -117,7 +185,17 @@ namespace MyQiHuoSim
                 return;
             }
 
-            recordTransItemBindingSource.Add(e.order);
+            if (this.InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    recordTransItemBindingSource.Add(e.order);
+                }));
+            }
+            else
+            {
+                recordTransItemBindingSource.Add(e.order);
+            }
 
         }
 

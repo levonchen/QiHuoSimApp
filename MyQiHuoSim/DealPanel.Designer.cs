@@ -36,20 +36,20 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.bt_Buy, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.bt_Sell, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.bt_Sell, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
-            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(289, 95);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(117, 219);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // bt_Buy
@@ -60,9 +60,9 @@
             this.bt_Buy.Location = new System.Drawing.Point(15, 15);
             this.bt_Buy.Margin = new System.Windows.Forms.Padding(5);
             this.bt_Buy.Name = "bt_Buy";
-            this.bt_Buy.Size = new System.Drawing.Size(124, 65);
+            this.bt_Buy.Size = new System.Drawing.Size(87, 89);
             this.bt_Buy.TabIndex = 0;
-            this.bt_Buy.Text = "买";
+            this.bt_Buy.Text = "买 ";
             this.bt_Buy.UseVisualStyleBackColor = false;
             this.bt_Buy.Click += new System.EventHandler(this.bt_Buy_Click);
             // 
@@ -72,10 +72,10 @@
             this.bt_Sell.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bt_Sell.Font = new System.Drawing.Font("SimSun", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bt_Sell.ForeColor = System.Drawing.Color.Black;
-            this.bt_Sell.Location = new System.Drawing.Point(149, 13);
+            this.bt_Sell.Location = new System.Drawing.Point(15, 112);
             this.bt_Sell.Margin = new System.Windows.Forms.Padding(5, 3, 3, 5);
             this.bt_Sell.Name = "bt_Sell";
-            this.bt_Sell.Size = new System.Drawing.Size(127, 67);
+            this.bt_Sell.Size = new System.Drawing.Size(89, 92);
             this.bt_Sell.TabIndex = 1;
             this.bt_Sell.Text = "卖";
             this.bt_Sell.UseVisualStyleBackColor = false;
@@ -87,7 +87,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DealPanel";
-            this.Size = new System.Drawing.Size(289, 95);
+            this.Size = new System.Drawing.Size(117, 219);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

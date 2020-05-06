@@ -12,6 +12,8 @@ namespace MyQiHuoSim.Model
     public enum RecordListType
     {
         Position = 1,
-        History = 2
+        History = 2,
+        //委托单
+        Waiting = 3
     }
 }

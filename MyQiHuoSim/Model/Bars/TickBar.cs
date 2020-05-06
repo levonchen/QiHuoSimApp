@@ -78,7 +78,7 @@ namespace MyQiHuoSim.Model.Bars
                 ResizeCurveImage(mCurveContext.BWidth + 1000, mCurveContext.BHeight);
             }
 
-            if(mCurveContext.YMinPoint < 50 || mCurveContext.YMaxPoint > mCurveContext.BHeight - 50)
+            if(mCurveContext.YMinPoint < 50 || mCurveContext.YMaxPoint > mCurveContext.BHeight - 200)
             {
                 ResizeCurveImage(mCurveContext.BWidth, mCurveContext.BHeight + 200);
 
@@ -134,6 +134,8 @@ namespace MyQiHuoSim.Model.Bars
                     }
                 }
             }
+
+            FitScreen();
         }
 
         private void DrawVolumnIncrease(OHLC lastItem, OHLC newItem)

@@ -136,6 +136,8 @@ namespace MyQiHuoSim.Model.Bars
 
                 DrawOneBar(xNow, gr, lastItem);
             }
+
+            FitScreen();
         }
 
 

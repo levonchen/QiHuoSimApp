@@ -1,4 +1,5 @@
-﻿using MyQiHuoSim.Service;
+﻿using MyQiHuoSim.Dialogs;
+using MyQiHuoSim.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,6 +46,9 @@ namespace MyQiHuoSim
             //producerThread.Start();
 
             Console.WriteLine("Form.... loaded");
+
+            //加载配置
+            dealPanel1.LoadAppSetting();
 
             toolStripComboBox_Speed.Items.AddRange(DataService.Instance.TimeSpeed.Keys.ToArray());
             toolStripComboBox_Speed.SelectedIndex = 0;            
@@ -212,6 +216,29 @@ namespace MyQiHuoSim
             String strText = e.ClickedItem.Text;
             DrawImageService.Instance.StartDraw();
             DataService.Instance.StartPlayBySpecifyTimeKey(strText);
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if(e.KeyCode == Keys.NumPad4)
+            //{
+            //    Console.WriteLine("Num 4 pressed");
+            //}
+
+            //if (e.KeyCode == Keys.NumPad6)
+            //{
+            //    Console.WriteLine("Num 6 pressed");
+            //}
+
+            dealPanel1.ExecuteShutupCommand(e.KeyCode);
+        }
+
+        private void toolStripButton_Setting_Click(object sender, EventArgs e)
+        {
+            SettingsDlg dlg = new SettingsDlg();
+
+            dlg.ShowDialog(this);
+            dealPanel1.LoadAppSetting();
         }
     }
 }

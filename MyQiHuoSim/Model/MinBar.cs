@@ -62,7 +62,7 @@ namespace MyQiHuoSim.Model
 
         public int ZoomIndex { get; set; }
 
-
+        private int volumnCanvasHeight = 200;
 
         //************* 与交易量相关的
 
@@ -206,8 +206,28 @@ namespace MyQiHuoSim.Model
 
         public void FitScreen()
         {
-            XStart = LastDrawPoint.x - 500;
-            YStart = LastDrawPoint.y - 300;
+
+            int xOffset = LastDrawPoint.x - XStart;
+            int yOffset = LastDrawPoint.y - YStart;
+
+            if(xOffset > DrawWindowWidth - 500)
+            {
+                XStart += 200;
+            }
+
+            if(yOffset < 100)
+            {
+                YStart -= 100;
+            }
+
+            if(yOffset > DrawWindowHeight - 200)
+            {
+                YStart += 100;
+            }
+
+
+            //XStart = LastDrawPoint.x - 500;
+            //YStart = LastDrawPoint.y - 300;
         }
 
         public void offsetImage(int xoffset, int yoffset)
@@ -254,7 +274,7 @@ namespace MyQiHuoSim.Model
             //new Rectangle(0, 0, mCanvas.Width, mCanvas.Height)
             //new Rectangle(0, 0, width, height)
 
-            int volumnCanvasHeight = 200;
+            
             int canvasHeight = height - volumnCanvasHeight;
 
             lock (syncObj)
