@@ -72,6 +72,11 @@ namespace MyQiHuoSim.Model
             TickBar.DrawOnGraphics(gs, width, height);
         }
 
+        public void FitBarView()
+        {
+            TickBar.FitScreen();
+        }
+
         public void offsetImage(int xoffset,int yoffset)
         {
             m_TickBar.offsetImage(xoffset, yoffset);

@@ -215,6 +215,11 @@ namespace MyQiHuoSim.Model
                 XStart += 300;
             }
 
+            if(xOffset <= 0)
+            {
+                XStart = 0;
+            }
+
             if(yOffset < 100)
             {
                 YStart -= 100;

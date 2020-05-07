@@ -128,7 +128,7 @@ namespace MyQiHuoSim
                 DataService.Instance.LoadAllDatas(filePath);
             }
             DrawImageService.Instance.StartDraw();
-            Invalidate();
+            candleStickView1.Invalidate();
 
             init_starttime_droplist();
         }
@@ -163,7 +163,7 @@ namespace MyQiHuoSim
         private void toolStripButtonNextTick_Click(object sender, EventArgs e)
         {
             DataService.Instance.NextTick();
-            Invalidate();
+            candleStickView1.Invalidate();
         }
 
         private void toolStripButton_Pause_Click(object sender, EventArgs e)
@@ -195,15 +195,17 @@ namespace MyQiHuoSim
         {
             DrawImageService.Instance.mCandleContext.SetBarType(Model.MinBarType.BTick);
             toolStripDropDownButton_BarTypeSelect.Text = "分时图";
-            Invalidate();
+            DrawImageService.Instance.mCandleContext.FitBarView();
+            candleStickView1.Invalidate();
+            
         }
 
         private void ToolStripMenuItem_OneMiBar_Click(object sender, EventArgs e)
         {
             DrawImageService.Instance.mCandleContext.SetBarType(Model.MinBarType.B1Min);
             toolStripDropDownButton_BarTypeSelect.Text = "1分钟";
-
-            Invalidate();
+            DrawImageService.Instance.mCandleContext.FitBarView();
+            candleStickView1.Invalidate();
         }
 
         private void toolStripDropDownButton_SpecifyTimeStart_Click(object sender, EventArgs e)

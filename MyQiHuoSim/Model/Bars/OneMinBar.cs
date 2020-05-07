@@ -179,20 +179,24 @@ namespace MyQiHuoSim.Model.Bars
 
         private void DrawOneBar(int xNow, Graphics gr,OHLC lastItem)
         {
+            //一个跳动点对应到像素的高度
+            int oneUnitToPixHeight = 10;
 
             float xOff = (xNow - 1) * 10;
 
-            float yOff = 20 * (lastItem.Open - mCurveContext.YOffset);
+            float yOff = oneUnitToPixHeight * (lastItem.Open - mCurveContext.YOffset);
 
             float y = mCurveContext.YMidPoint - yOff;
 
-            int barHeight = 20 * (int)Math.Abs(lastItem.Open - lastItem.Close);
+            int barHeight = oneUnitToPixHeight * (int)Math.Abs(lastItem.Open - lastItem.Close);
 
-            float yTmpMax = 20 * (lastItem.High - mCurveContext.YOffset);
+            float yTmpMax = oneUnitToPixHeight * (lastItem.High - mCurveContext.YOffset);
             yTmpMax = mCurveContext.YMidPoint - yTmpMax;
 
-            float yTmpMin = 20 * (lastItem.Low - mCurveContext.YOffset);
+            float yTmpMin = oneUnitToPixHeight * (lastItem.Low - mCurveContext.YOffset);
             yTmpMin = mCurveContext.YMidPoint - yTmpMin;
+
+           
 
             //清空背景
             gr.FillRectangle(Brushes.Black, xOff, 0, 10, mCurveContext.BHeight);
@@ -227,19 +231,19 @@ namespace MyQiHuoSim.Model.Bars
 
             //记录最后一个点，方便做屏幕在切换不同类型时能自动的找到最近的点。
             LastDrawPoint.x = (int)xOff;
-            LastDrawPoint.y = (int)y;
+            LastDrawPoint.y = (int)(y + barHeight);
 
 
             if (FirstBar != null)
             {
-                if (y < mCurveContext.YMinPoint)
+                if (yTmpMax < mCurveContext.YMinPoint)
                 {
-                    mCurveContext.YMinPoint = y;
+                    mCurveContext.YMinPoint = yTmpMax;
                 }
 
-                if (y > mCurveContext.YMaxPoint)
+                if (yTmpMin > mCurveContext.YMaxPoint)
                 {
-                    mCurveContext.YMaxPoint = y;
+                    mCurveContext.YMaxPoint = yTmpMin;
                 }
             }
         }

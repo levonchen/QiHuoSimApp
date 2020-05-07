@@ -72,6 +72,9 @@ namespace MyQiHuoSim.Model.Bars
 
         private void DrawCanvasIncrease(OHLC lastItem, OHLC newItem)
         {
+            //一个跳动点对应到像素的高度
+            int oneUnitToPixHeight = 10;
+
             int xNow = mDatas.Count();
             if(xNow >= mCurveContext.BWidth - 100)
             {
@@ -94,7 +97,7 @@ namespace MyQiHuoSim.Model.Bars
                 float yOff = newItem.Open - mCurveContext.YOffset;
 
                 //注意方向，增加的话向上的，那么就是减的
-                float y = mCurveContext.YMidPoint - 20 * yOff;            
+                float y = mCurveContext.YMidPoint - oneUnitToPixHeight * yOff;            
 
                 if (lastItem != null)
                 {
@@ -109,7 +112,7 @@ namespace MyQiHuoSim.Model.Bars
                     using (Pen thick_pen = new Pen(cl, 1))
                     {
                         yOff = lastItem.Open - mCurveContext.YOffset;
-                        float yLast = mCurveContext.YMidPoint - 20 * yOff;
+                        float yLast = mCurveContext.YMidPoint - oneUnitToPixHeight * yOff;
 
                         gr.DrawLine(thick_pen, xNow-1, yLast, xNow, y);
                     }
