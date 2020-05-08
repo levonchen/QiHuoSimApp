@@ -188,6 +188,15 @@ namespace MyQiHuoSim.Service
             }
         }
 
+        public void BroadCastTick(String strTickLine)
+        {
+            var qt = getQuoteFromLine(strTickLine);//GetOneLine();
+            if (qt != null)
+            {
+                Invoke_OnQuoteTick(qt);
+            }
+        }
+
         public void Pause()
         {
             mTimer.Enabled = false;
@@ -221,7 +230,22 @@ namespace MyQiHuoSim.Service
                 return null;
 
             var line = reader.ReadLine();
-            string[] fields = line.Split(',');
+
+            return getQuoteFromLine(line);
+        }
+
+        private Quote getQuoteFromLine(string strLine)
+        {
+            if (String.IsNullOrEmpty(strLine))
+            {
+                return null;
+            }
+            string[] fields = strLine.Split(',');
+
+            if(fields.Length < 28)
+            {
+                return null;
+            }
 
             Quote qt = new Quote();
             qt.datetime = DateTime.Parse(fields[0]);

@@ -65,6 +65,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton_Setting = new System.Windows.Forms.ToolStripButton();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.toolStripButton_StartPipe = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -288,6 +289,7 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonLoadDatas,
+            this.toolStripButton_StartPipe,
             this.toolStripSeparator1,
             this.toolStripButtonStart,
             this.toolStripButton_randomStart,
@@ -478,6 +480,16 @@
             this.splitContainer3.SplitterDistance = 33;
             this.splitContainer3.TabIndex = 7;
             // 
+            // toolStripButton_StartPipe
+            // 
+            this.toolStripButton_StartPipe.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton_StartPipe.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_StartPipe.Image")));
+            this.toolStripButton_StartPipe.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_StartPipe.Name = "toolStripButton_StartPipe";
+            this.toolStripButton_StartPipe.Size = new System.Drawing.Size(36, 22);
+            this.toolStripButton_StartPipe.Text = "管道";
+            this.toolStripButton_StartPipe.Click += new System.EventHandler(this.toolStripButton_StartPipe_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -558,6 +570,7 @@
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage3;
         private RecordTransaction recordTransaction_WaitingOrders;
+        private System.Windows.Forms.ToolStripButton toolStripButton_StartPipe;
     }
 }
 

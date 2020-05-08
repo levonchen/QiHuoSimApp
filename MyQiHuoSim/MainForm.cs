@@ -34,16 +34,13 @@ namespace MyQiHuoSim
 
         private Thread producerThread = null;
 
+        private bool Pipe_Started = false;
+
         private delegate void delegateSetTickValue(String tick);
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //server = new NamedPipeServerStream(PipeName);
-            //bReader = new BinaryReader(server);
-            //bWriter = new BinaryWriter(server);
-            //producerThread = new Thread(new ThreadStart(ProducerThread));
 
-            //producerThread.Start();
 
             Console.WriteLine("Form.... loaded");
 
@@ -61,6 +58,18 @@ namespace MyQiHuoSim
             //producerThread.Join();
             //Console.WriteLine("Stopped .... ");
 
+            if (Pipe_Started)
+            {
+                if (server != null)
+                {  
+                    server.Close();
+                    server.Dispose();
+                   server = null;
+                }
+
+                producerThread.Abort();
+            }
+
             //if (server != null)
             //{  
             //    server.Close();
@@ -72,12 +81,17 @@ namespace MyQiHuoSim
 
         private void setTickDelegate(String tick)
         {
-            string[] items = tick.Split(',');
-            if (items.Length <3)
-                return;
-
-            Double ask1 = Double.Parse(items[0]);
-            Double bid1 = Double.Parse(items[1]);   
+            if (this.InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    DataService.Instance.BroadCastTick(tick);
+                }));
+            }
+            else
+            {
+                DataService.Instance.BroadCastTick(tick);
+            }
 
         }
 
@@ -241,6 +255,20 @@ namespace MyQiHuoSim
 
             dlg.ShowDialog(this);
             dealPanel1.LoadAppSetting();
+        }
+
+        private void toolStripButton_StartPipe_Click(object sender, EventArgs e)
+        {
+            DrawImageService.Instance.StartDraw();
+            candleStickView1.Invalidate();
+
+            server = new NamedPipeServerStream(PipeName);
+            bReader = new BinaryReader(server);
+            bWriter = new BinaryWriter(server);
+            producerThread = new Thread(new ThreadStart(ProducerThread));
+            producerThread.Start();
+
+            Pipe_Started = true;
         }
     }
 }
