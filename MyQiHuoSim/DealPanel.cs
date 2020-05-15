@@ -145,6 +145,9 @@ namespace MyQiHuoSim
                         Buy_On_Sell1();
                     }
                 }
+            }else if(k == AppSetting.ShutcutKeys.NormalSpeedPlay)
+            {
+                DataService.Instance.SetSpeedToNormal();
             }
         }
     }

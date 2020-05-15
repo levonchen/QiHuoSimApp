@@ -80,6 +80,11 @@ namespace MyQiHuoSim.Service
             mTimer.Interval = v;
         }
 
+        public void SetSpeedToNormal()
+        {
+            mTimer.Interval = 500;
+        }
+
         private void MTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             NextTick();
@@ -137,7 +142,27 @@ namespace MyQiHuoSim.Service
             {
                 readIndex = TimeStartMap[timeKey];
 
+                if(readIndex > 0)
+                {
+                    playTickFromBeginToIndex(readIndex);
+                }
+
                 mTimer.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// 如果从指定的时间开始播放，但是实际上还是需要以前的图形的的，不然不好做判断。
+        /// 把从开始到指定索引的图形补充起来
+        /// </summary>
+        /// <param name="stopIndex"></param>
+        private void playTickFromBeginToIndex(int stopIndex)
+        {
+            //临时设置为0，让播放一遍数据吧
+            readIndex = 0;
+            while(readIndex < stopIndex)
+            {
+                NextTick();
             }
         }
 

@@ -117,7 +117,9 @@ namespace MyQiHuoSim.Model.Bars
         private void DrawIncrease(OHLC lastItem)
         {
             int xNow = mDatas.Count();
-            if (xNow >= mCurveContext.BWidth - 100)
+
+            //必选按照一个bar绘制的宽度来计算
+            if (10*xNow >= mCurveContext.BWidth - 100)
             {
                 ResizeCurveImage(mCurveContext.BWidth + 1000, mCurveContext.BHeight);
             }

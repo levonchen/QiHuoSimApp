@@ -51,6 +51,7 @@ namespace MyQiHuoSim.Dialogs
                     tb_CancelOrder.Text = appSettings.ShutcutKeys.CancelOrder.ToString();
                     tb_CloseAllPosition.Text = appSettings.ShutcutKeys.CloseAllPosition.ToString();
 
+                    tb_NormalSpeedPlay.Text = appSettings.ShutcutKeys.NormalSpeedPlay.ToString();
                 }
             }
 
@@ -87,6 +88,11 @@ namespace MyQiHuoSim.Dialogs
                 appSettings.ShutcutKeys.CloseAllPosition = (Keys)Enum.Parse(typeof(Keys), tb_CloseAllPosition.Text);
             }
 
+            if(!String.IsNullOrEmpty(tb_NormalSpeedPlay.Text))
+            {
+                appSettings.ShutcutKeys.NormalSpeedPlay = (Keys)Enum.Parse(typeof(Keys), tb_NormalSpeedPlay.Text);
+            }
+
             appSettings.Save();
         }
 
@@ -95,5 +101,6 @@ namespace MyQiHuoSim.Dialogs
             UIToSettings();
             this.Close();
         }
+
     }
 }

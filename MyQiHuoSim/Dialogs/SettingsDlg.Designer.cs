@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button_save_shutcutkeys = new System.Windows.Forms.Button();
             this.tb_Sell_Buy1 = new System.Windows.Forms.TextBox();
             this.tb_Buy_Buy1 = new System.Windows.Forms.TextBox();
             this.tb_Sell_Sell1 = new System.Windows.Forms.TextBox();
@@ -43,7 +44,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button_save_shutcutkeys = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tb_NormalSpeedPlay = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +63,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.tb_NormalSpeedPlay);
+            this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.button_save_shutcutkeys);
             this.tabPage1.Controls.Add(this.tb_Sell_Buy1);
             this.tabPage1.Controls.Add(this.tb_Buy_Buy1);
@@ -81,6 +85,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "快捷键";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button_save_shutcutkeys
+            // 
+            this.button_save_shutcutkeys.Location = new System.Drawing.Point(431, 270);
+            this.button_save_shutcutkeys.Name = "button_save_shutcutkeys";
+            this.button_save_shutcutkeys.Size = new System.Drawing.Size(75, 23);
+            this.button_save_shutcutkeys.TabIndex = 12;
+            this.button_save_shutcutkeys.Text = "保存";
+            this.button_save_shutcutkeys.UseVisualStyleBackColor = true;
+            this.button_save_shutcutkeys.Click += new System.EventHandler(this.button_save_shutcutkeys_Click);
             // 
             // tb_Sell_Buy1
             // 
@@ -195,20 +209,28 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 424);
+            this.tabPage2.Size = new System.Drawing.Size(556, 313);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button_save_shutcutkeys
+            // label7
             // 
-            this.button_save_shutcutkeys.Location = new System.Drawing.Point(431, 270);
-            this.button_save_shutcutkeys.Name = "button_save_shutcutkeys";
-            this.button_save_shutcutkeys.Size = new System.Drawing.Size(75, 23);
-            this.button_save_shutcutkeys.TabIndex = 12;
-            this.button_save_shutcutkeys.Text = "保存";
-            this.button_save_shutcutkeys.UseVisualStyleBackColor = true;
-            this.button_save_shutcutkeys.Click += new System.EventHandler(this.button_save_shutcutkeys_Click);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(314, 214);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "常速播放：";
+            // 
+            // tb_NormalSpeedPlay
+            // 
+            this.tb_NormalSpeedPlay.Location = new System.Drawing.Point(406, 205);
+            this.tb_NormalSpeedPlay.Name = "tb_NormalSpeedPlay";
+            this.tb_NormalSpeedPlay.Size = new System.Drawing.Size(100, 21);
+            this.tb_NormalSpeedPlay.TabIndex = 14;
+            this.tb_NormalSpeedPlay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_KeyDown);
+            this.tb_NormalSpeedPlay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
             // 
             // SettingsDlg
             // 
@@ -246,5 +268,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_save_shutcutkeys;
+        private System.Windows.Forms.TextBox tb_NormalSpeedPlay;
+        private System.Windows.Forms.Label label7;
     }
 }

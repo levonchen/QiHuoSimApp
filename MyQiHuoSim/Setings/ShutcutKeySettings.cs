@@ -9,6 +9,20 @@ namespace MyQiHuoSim.Setings
 {
     public class ShutcutKeySettings
     {
+        public ShutcutKeySettings()
+        {
+            Buy_On_Sell1 = Keys.NumPad1;
+            Sell_On_Buy1 = Keys.NumPad3;
+
+            Buy_On_Buy1 = Keys.NumPad4;
+            Sell_On_Sell1 = Keys.NumPad6;
+
+            CancelOrder = Keys.NumPad8;
+            CloseAllPosition = Keys.NumPad5;
+
+            NormalSpeedPlay = Keys.Space;
+
+        }
         /// <summary>
         /// 卖一价买
         /// </summary>
@@ -39,5 +53,10 @@ namespace MyQiHuoSim.Setings
         /// 全部平仓
         /// </summary>
         public Keys CloseAllPosition { get; set; }
+
+        /// <summary>
+        /// 正常速度播放，为了是在快进的时候快速切换到正常速度
+        /// </summary>
+        public Keys NormalSpeedPlay { get; set; }
     }
 }
